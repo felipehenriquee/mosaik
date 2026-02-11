@@ -36,19 +36,32 @@ const UploadImage = () => {
     });
   };
 
+  const handleDeletePage = (index: number) => {
+    setPages((prevPages) => {
+      const newPages = [...prevPages];
+      newPages.splice(index, 1);
+      return newPages;
+    });
+  };
+
+  const handleViewPage = (index: number) => {
+    console.log("Viewing page", index);
+  };
+
   return (
     <div className="flex flex-col gap-1">
-      <div className="w-full flex items-center justify-center">
+      <div className="w-full  flex items-center justify-center">
         <RButton
           variant="contained"
           color="white"
           title="Upload de Imagens"
           onClick={handleUploadClick}
+          background={colors.blue}
         />
         <RButton
           variant="iconButton"
           color={colors.black}
-          title="Configurações de página"
+          title="Configurações de página para impressão"
           onClick={() => {}}
           startIcon={rIcons.settings}
         />
@@ -61,9 +74,30 @@ const UploadImage = () => {
         hidden
         onChange={handleFilesChange}
       />
-      <div>
-        <ListPages pages={pages} />
-      </div>
+
+      {pages.length > 0 && (
+        <div className="custom-scroll relative mt-2 overflow-auto min-h-105 max-h-[63vh]">
+          <ListPages
+            pages={pages}
+            onDelete={handleDeletePage}
+            onView={handleViewPage}
+          />
+          <div className="sticky bottom-0 w-full flex justify-end p-2">
+            <RButton
+              variant="contained"
+              color={colors.white}
+              title="Gerar PDF"
+              onClick={() => {}}
+              background={colors.orange}
+            />
+          </div>
+        </div>
+      )}
+      {pages.length === 0 && (
+        <div className="flex items-center justify-center h-40">
+          <p className="text-gray-500">Nenhuma imagem carregada</p>
+        </div>
+      )}
     </div>
   );
 };

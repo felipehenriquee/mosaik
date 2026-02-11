@@ -10,6 +10,7 @@ interface RButtonProps {
   title?: string;
   endIcon?: string;
   startIcon?: string;
+  iconSize?: number;
   onClick?: () => void;
   variant?: "text" | "outlined" | "contained" | "iconButton";
 }
@@ -21,6 +22,7 @@ const RButton = ({
   variant = "contained",
   endIcon,
   startIcon,
+  iconSize = 22,
   onClick,
 }: RButtonProps) => {
   const buttonStyle: SxProps<Theme> = {
@@ -38,7 +40,7 @@ const RButton = ({
     return (
       <Tooltip title={title || "Botão"}>
         <IconButton sx={buttonStyle} onClick={onClick}>
-          <Icon icon={startIcon || endIcon || "mdi:help-circle"} width={22} />
+          <Icon icon={startIcon || endIcon || "mdi:help-circle"} width={iconSize} />
         </IconButton>
       </Tooltip>
     );
