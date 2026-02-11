@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Playwrite+NZ+Basic:wght@100..400&display=swap');
+@import "tailwindcss";
+
+@theme {
+
+  --color-h-orange: #FA8334;
+  --color-h-blue: #197bbd;
+  --color-h-yellow: #F9DC5C;
+  --color-h-green: #00FF00;
+  --color-h-black: #111111;
+  --color-h-white: #FAFAFA;
+
+  --font-fjalla:  "Fjalla One", sans-serif;
+}
